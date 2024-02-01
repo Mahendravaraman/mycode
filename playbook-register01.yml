@@ -1,0 +1,22 @@
+---
+ - name: Playbook to register keyword
+   hosts: planetexpress
+
+   tasks:
+    - name: "Issue a trival command"
+      command: ls /lib
+      register: contentz_lib
+
+    - name: "debug - display data returned"
+      debug:
+        msg: "{{ contentz_lib }}"
+
+    - name: "debug - standard error"
+      ansible.builtin.debug:
+         msg: "{{ contentz_lib.stderr }}"
+
+    - name: "debug - standard out"
+      ansible.builtin.debug:
+         msg: "{{ contentz_lib.stdout }}"
+
+       
